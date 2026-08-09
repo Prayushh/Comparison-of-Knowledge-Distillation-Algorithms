@@ -1,0 +1,66 @@
+# ==========================================================
+# CIFAR-100 Experiment Configuration
+# ==========================================================
+
+experiment:
+  name: "cifar100_experiment"
+  dataset: "CIFAR100"
+  num_classes: 100
+
+seed: 42
+
+device: "cuda"
+
+dataset:
+
+  root: "./data"
+
+  image_size: 32
+
+  num_workers: 4
+
+  pin_memory: true
+
+dataloader:
+
+  batch_size: 128
+
+  shuffle: true
+
+training:
+
+  epochs: 200
+
+  optimizer: "SGD"
+
+  learning_rate: 0.1
+
+  momentum: 0.9
+
+  weight_decay: 0.0005
+
+  scheduler: "MultiStepLR"
+
+  milestones: [100, 150]
+
+  gamma: 0.1
+
+checkpoint:
+
+  save_dir: "./checkpoints"
+
+  save_best_only: true
+
+  save_every: 10
+
+logging:
+
+  log_dir: "./results"
+
+  print_frequency: 50
+
+  save_training_curve: true
+
+evaluation:
+
+  topk: [1, 5]

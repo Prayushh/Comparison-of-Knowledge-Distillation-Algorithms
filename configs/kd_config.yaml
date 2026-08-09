@@ -1,0 +1,82 @@
+# ==========================================================
+# Knowledge Distillation Configuration
+# ==========================================================
+#
+# This file stores every hyperparameter related to
+# knowledge distillation.
+#
+# Each algorithm has its own section so that
+# experiments can be changed without modifying code.
+#
+# ==========================================================
+
+# ----------------------------------------------------------
+# Vanilla Knowledge Distillation
+# ----------------------------------------------------------
+vanilla_kd:
+
+  enabled: true
+
+  temperature: 4.0
+
+  alpha: 0.9
+
+# ----------------------------------------------------------
+# FitNets
+# ----------------------------------------------------------
+fitnets:
+
+  enabled: true
+
+  temperature: 4.0
+
+  alpha: 0.9
+
+  beta: 100.0
+
+  hint_layer_teacher: "layer3"
+
+  hint_layer_student: "layer3"
+
+  regressor:
+
+    type: "conv1x1"
+
+# ----------------------------------------------------------
+# Attention Transfer
+# ----------------------------------------------------------
+attention_transfer:
+
+  enabled: true
+
+  temperature: 4.0
+
+  alpha: 0.9
+
+  gamma: 1000.0
+
+  attention_layers:
+
+    - "layer1"
+
+    - "layer2"
+
+    - "layer3"
+
+# ----------------------------------------------------------
+# Teacher
+# ----------------------------------------------------------
+teacher:
+
+  architecture: "resnet34"
+
+  checkpoint: "./checkpoints/resnet34_teacher.pth"
+
+# ----------------------------------------------------------
+# Student
+# ----------------------------------------------------------
+student:
+
+  architecture: "resnet18"
+
+  checkpoint: "./checkpoints/resnet18_student.pth"
