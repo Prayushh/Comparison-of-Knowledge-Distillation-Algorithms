@@ -1,101 +1,37 @@
-# ==========================================================
-# CIFAR-10 Experiment Configuration
-# ==========================================================
-#
-# This file contains all experiment settings that are
-# specific to the CIFAR-10 dataset.
-#
-# Nothing inside the training scripts should be hardcoded.
-# Instead, every script will read values from this file.
-#
-# ==========================================================
-
-# -------------------------
-# Experiment Information
-# -------------------------
 experiment:
   name: "cifar10_experiment"
   dataset: "CIFAR10"
   num_classes: 10
 
-# -------------------------
-# Randomness
-# -------------------------
 seed: 42
 
-# -------------------------
-# Hardware
-# -------------------------
 device: "cuda"
 
-# -------------------------
-# Dataset
-# -------------------------
 dataset:
-
   root: "./data"
-
   image_size: 32
-
   num_workers: 4
-
   pin_memory: true
 
-# -------------------------
-# DataLoader
-# -------------------------
 dataloader:
-
   batch_size: 128
+  val_size: 5000
 
-  shuffle: true
-
-# -------------------------
-# Training
-# -------------------------
 training:
-
   epochs: 200
-
-  optimizer: "SGD"
-
   learning_rate: 0.1
-
   momentum: 0.9
-
   weight_decay: 0.0005
+  scheduler: "cosine"
+  t_max: 200
 
-  scheduler: "MultiStepLR"
-
-  milestones: [100, 150]
-
-  gamma: 0.1
-
-# -------------------------
-# Checkpoints
-# -------------------------
 checkpoint:
-
   save_dir: "./checkpoints"
-
   save_best_only: true
 
-  save_every: 10
-
-# -------------------------
-# Logging
-# -------------------------
 logging:
-
   log_dir: "./results"
-
   print_frequency: 50
 
-  save_training_curve: true
-
-# -------------------------
-# Evaluation
-# -------------------------
 evaluation:
-
   topk: [1, 5]
