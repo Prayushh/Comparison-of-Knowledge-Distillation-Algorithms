@@ -181,7 +181,10 @@ def set_seed(seed: int = 42, verbose: bool = False) -> None:
     # This is useful for debugging but can sometimes prevent
     # certain models from training.
     #
-    # torch.use_deterministic_algorithms(True)
+    try:
+        torch.use_deterministic_algorithms(True, warn_only=True)
+    except Exception:
+        pass
 
     if verbose:
         print(f"[Seed] Random seed set to {seed}")
