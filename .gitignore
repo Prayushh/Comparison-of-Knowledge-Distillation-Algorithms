@@ -1,4 +1,4 @@
-# Datasets (never commit — download at runtime)
+# Datasets
 data/
 **/data/
 *.tar.gz
@@ -16,8 +16,16 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# Model checkpoints / logs
+# Model checkpoints and weights
+weights/
 *.pth
 *.pt
+
+# Training logs
 runs/
 logs/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
